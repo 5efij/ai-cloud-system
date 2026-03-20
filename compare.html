@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body style="text-align:center; background:#111; color:white;">
+
+<a href="index.html">⬅ Back</a>
+
+<h2>⚖️ Compare Images</h2>
+
+<input type="file" id="img1">
+<input type="file" id="img2">
+
+<br><br>
+<button onclick="compare()">Compare</button>
+
+<p id="result"></p>
+
+<script>
+function compare() {
+  let res = document.getElementById("result");
+
+  if (img1.files.length && img2.files.length) {
+    res.innerText = "🤖 Comparing...\n(Mocking AI result)";
+    
+    setTimeout(() => {
+      res.innerText = "😎 Images might be similar";
+    }, 1000);
+  }
+}
+</script>
+
+</body>
+</html>
