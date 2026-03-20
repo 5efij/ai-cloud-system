@@ -1,135 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Cloud System</title>
+  <title>AI Smart Cloud</title>
 </head>
+
 <body>
 
-<h2>AI Smart Cloud</h2>
+<h2>AI Smart Cloud System 🚀</h2>
 
 <input type="file" id="upload">
 <br><br>
-<img id="image" width="200">
 
-<p id="result"></p>
+<img id="image" width="250">
+<br><br>
 
-<script src="script.js"></script>
+<p id="result">Result will appear here...</p>
+
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js"></script>
 
 <script>
   const firebaseConfig = {
-    apiKey: "PASTE_HERE",
-    authDomain: "// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBhSxS9UM2BNpZr50YkEybgZ1whRGkAiXk",
-  authDomain: "ai-cloud-system.firebaseapp.com",
-  projectId: "ai-cloud-system",
-  storageBucket: "ai-cloud-system.firebasestorage.app",
-  messagingSenderId: "196515068194",
-  appId: "1:196515068194:web:64d33e5c2af05b8011cd7b",
-  measurementId: "G-40340VYNKV"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);",
-    projectId: "// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBhSxS9UM2BNpZr50YkEybgZ1whRGkAiXk",
-  authDomain: "ai-cloud-system.firebaseapp.com",
-  projectId: "ai-cloud-system",
-  storageBucket: "ai-cloud-system.firebasestorage.app",
-  messagingSenderId: "196515068194",
-  appId: "1:196515068194:web:64d33e5c2af05b8011cd7b",
-  measurementId: "G-40340VYNKV"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);",
-    storageBucket: "// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBhSxS9UM2BNpZr50YkEybgZ1whRGkAiXk",
-  authDomain: "ai-cloud-system.firebaseapp.com",
-  projectId: "ai-cloud-system",
-  storageBucket: "ai-cloud-system.firebasestorage.app",
-  messagingSenderId: "196515068194",
-  appId: "1:196515068194:web:64d33e5c2af05b8011cd7b",
-  measurementId: "G-40340VYNKV"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);",
-    messagingSenderId: "// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBhSxS9UM2BNpZr50YkEybgZ1whRGkAiXk",
-  authDomain: "ai-cloud-system.firebaseapp.com",
-  projectId: "ai-cloud-system",
-  storageBucket: "ai-cloud-system.firebasestorage.app",
-  messagingSenderId: "196515068194",
-  appId: "1:196515068194:web:64d33e5c2af05b8011cd7b",
-  measurementId: "G-40340VYNKV"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);",
-    appId: "// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBhSxS9UM2BNpZr50YkEybgZ1whRGkAiXk",
-  authDomain: "ai-cloud-system.firebaseapp.com",
-  projectId: "ai-cloud-system",
-  storageBucket: "ai-cloud-system.firebasestorage.app",
-  messagingSenderId: "196515068194",
-  appId: "1:196515068194:web:64d33e5c2af05b8011cd7b",
-  measurementId: "G-40340VYNKV"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);"
+    apiKey: "AIzaSyBhSxS9UM2BNpZr50YkEybgZ1whRGkAiXk",
+    authDomain: "ai-cloud-system.firebaseapp.com",
+    projectId: "ai-cloud-system",
+    storageBucket: "ai-cloud-system.firebasestorage.app",
+    messagingSenderId: "196515068194",
+    appId: "1:196515068194:web:64d33e5c2af05b8011cd7b"
   };
 
   firebase.initializeApp(firebaseConfig);
 </script>
+
+<!-- AI -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+<!-- JS -->
+<script src="script.js"></script>
+
 </body>
 </html>
