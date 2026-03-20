@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Analyze</title>
-</head>
-<body style="text-align:center; background:#111; color:white;">
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+}
 
-<a href="index.html">⬅ Back</a>
+.navbar {
+  background:#020617;
+  padding:15px;
+}
+
+input {
+  margin-top:20px;
+}
+
+img {
+  margin-top:20px;
+  border-radius:10px;
+}
+
+#result {
+  margin-top:20px;
+  white-space: pre-line;
+  color:#38bdf8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="index.html" style="color:white;">⬅ Back</a>
+</div>
 
 <h2>📸 Analyze Image</h2>
 
 <input type="file" id="upload">
-<br><br>
 
+<br>
 <img id="image" width="250">
+
 <p id="result"></p>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
