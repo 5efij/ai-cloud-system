@@ -6,25 +6,23 @@ mobilenet.load().then((loadedModel) => {
 
 const upload = document.getElementById("upload");
 const image = document.getElementById("image");
+const result = document.getElementById("result");
 
-upload.addEventListener("change", () => {
-  const file = upload.files[0];
+upload.addEventListener("change", (e) => {
+  const file = e.target.files[0];
 
-  const storage = firebase.storage();
-  const storageRef = storage.ref("images/" + Date.now());
+  if (!file) return;
 
-  storageRef.put(file).then(() => {
-    storageRef.getDownloadURL().then((url) => {
+  // عرض الصورة مباشرة (بدون انتظار الكلاود)
+  const localURL = URL.createObjectURL(file);
+  image.src = localURL;
 
-      image.src = url;
+  result.innerText = "Analyzing...";
 
-      setTimeout(() => {
-        model.classify(image).then((predictions) => {
-          document.getElementById("result").innerText =
-            predictions[0].className;
-        });
-      }, 2000);
-
+  // AI تحليل
+  setTimeout(() => {
+    model.classify(image).then((predictions) => {
+      result.innerText = predictions[0].className;
     });
-  });
+  }, 1500);
 });
