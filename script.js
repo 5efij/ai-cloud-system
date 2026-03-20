@@ -1,14 +1,16 @@
 const upload = document.getElementById("upload");
 const image = document.getElementById("image");
-const result = document.getElementById("result");
 
 upload.addEventListener("change", () => {
   const file = upload.files[0];
-  image.src = URL.createObjectURL(file);
 
-  result.innerText = "Analyzing...";
+  const storage = firebase.storage();
+  const storageRef = storage.ref(file.name);
 
-  setTimeout(() => {
-    result.innerText = "Image uploaded successfully 😎";
-  }, 2000);
+  storageRef.put(file).then(() => {
+    storageRef.getDownloadURL().then((url) => {
+      image.src = url;
+      alert("Uploaded to Cloud 😎");
+    });
+  });
 });
