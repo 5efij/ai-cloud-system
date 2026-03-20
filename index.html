@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Cloud System</title>
+  <title>AI Smart Cloud System</title>
+
   <style>
     body {
       font-family: Arial;
       text-align: center;
       background: #0f172a;
       color: white;
-    }
-
-    h2 {
-      margin-top: 30px;
     }
 
     #image {
@@ -23,12 +20,24 @@
       margin-top: 20px;
       font-size: 18px;
       color: #38bdf8;
+      white-space: pre-line;
     }
 
-    input {
-      margin-top: 20px;
+    #history img {
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      border: none;
+      background: red;
+      color: white;
+      cursor: pointer;
     }
   </style>
+
 </head>
 
 <body>
@@ -41,6 +50,11 @@
 <img id="image" width="250">
 
 <p id="result">Upload image to analyze</p>
+
+<button onclick="clearHistory()">🗑 Clear History</button>
+
+<h3>📂 History</h3>
+<div id="history"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
