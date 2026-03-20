@@ -1,6 +1,6 @@
 let model;
 
-// تحميل موديل الذكاء الاصطناعي
+// تحميل موديل AI
 mobilenet.load().then((loadedModel) => {
   model = loadedModel;
   console.log("AI Model Loaded ✅");
@@ -10,17 +10,24 @@ const upload = document.getElementById("upload");
 const image = document.getElementById("image");
 const result = document.getElementById("result");
 
-// صوت عند ظهور النتيجة
+// دالة الصوت
 function playSound() {
   const audio = new Audio("https://www.soundjay.com/buttons/sounds/button-3.mp3");
-  audio.play();
+  audio.volume = 1;
+
+  audio.play().catch(() => {
+    console.log("Sound blocked");
+  });
 }
 
 upload.addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
-  // عرض الصورة مباشرة
+  // 🔥 صوت يشتغل مباشرة (حتى ما ينحظر)
+  playSound();
+
+  // عرض الصورة
   const localURL = URL.createObjectURL(file);
   image.src = localURL;
 
@@ -30,8 +37,6 @@ upload.addEventListener("change", (e) => {
   // تحليل الصورة
   setTimeout(() => {
     model.classify(image).then((predictions) => {
-
-      playSound(); // 🔥 تشغيل صوت
 
       result.innerText =
         "🔍 Result:\n\n" +
