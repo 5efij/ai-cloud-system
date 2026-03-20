@@ -18,9 +18,9 @@ upload.addEventListener("change", (e) => {
 
   result.innerText = "⏳ AI is analyzing...";
 
-  // اهتزاز (بالموبايل)
+  // اهتزاز (إذا موبايل)
   if (navigator.vibrate) {
-    navigator.vibrate(200);
+    navigator.vibrate([200, 100, 200]);
   }
 
   setTimeout(() => {
@@ -34,11 +34,16 @@ upload.addEventListener("change", (e) => {
         "\n\n🎯 Accuracy: " +
         (predictions[0].probability * 100).toFixed(2) + "%";
 
-      // 🔥 تأثير وميض للصورة
-      image.style.border = "5px solid #00ffcc";
+      // 🔥 تأثير احترافي
+      image.style.transform = "scale(1.1)";
+      image.style.transition = "0.3s";
+
       setTimeout(() => {
-        image.style.border = "none";
-      }, 500);
+        image.style.transform = "scale(1)";
+      }, 300);
+
+      // 🔥 تغيير لون النتيجة
+      result.style.color = "#00ffcc";
 
     });
   }, 1500);
