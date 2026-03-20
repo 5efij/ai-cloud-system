@@ -1,29 +1,46 @@
 let model;
 
+// تحميل موديل الذكاء الاصطناعي
 mobilenet.load().then((loadedModel) => {
   model = loadedModel;
+  console.log("AI Model Loaded ✅");
 });
 
 const upload = document.getElementById("upload");
 const image = document.getElementById("image");
 const result = document.getElementById("result");
 
+// صوت عند ظهور النتيجة
+function playSound() {
+  const audio = new Audio("https://www.soundjay.com/buttons/sounds/button-3.mp3");
+  audio.play();
+}
+
 upload.addEventListener("change", (e) => {
   const file = e.target.files[0];
-
   if (!file) return;
 
-  // عرض الصورة مباشرة (بدون انتظار الكلاود)
+  // عرض الصورة مباشرة
   const localURL = URL.createObjectURL(file);
   image.src = localURL;
 
-result.innerText =
-  "Detected: " + predictions[0].className +
-  "\nAccuracy: " + (predictions[0].probability * 100).toFixed(2) + "%";
-  // AI تحليل
+  // رسالة انتظار
+  result.innerText = "⏳ AI is analyzing...";
+
+  // تحليل الصورة
   setTimeout(() => {
     model.classify(image).then((predictions) => {
-      result.innerText = predictions[0].className;
+
+      playSound(); // 🔥 تشغيل صوت
+
+      result.innerText =
+        "🔍 Result:\n\n" +
+        "1️⃣ " + predictions[0].className +
+        "\n2️⃣ " + predictions[1].className +
+        "\n3️⃣ " + predictions[2].className +
+        "\n\n🎯 Accuracy: " +
+        (predictions[0].probability * 100).toFixed(2) + "%";
+
     });
   }, 1500);
 });
