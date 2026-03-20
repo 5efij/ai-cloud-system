@@ -1,3 +1,9 @@
+let model;
+
+mobilenet.load().then((loadedModel) => {
+  model = loadedModel;
+});
+
 const upload = document.getElementById("upload");
 const image = document.getElementById("image");
 
@@ -10,11 +16,14 @@ upload.addEventListener("change", () => {
   storageRef.put(file).then(() => {
     storageRef.getDownloadURL().then((url) => {
 
-      // افتحي الصورة برابط جديد
-      window.open(url, "_blank");
-
-      // عرضها بالموقع
       image.src = url;
+
+      setTimeout(() => {
+        model.classify(image).then((predictions) => {
+          document.getElementById("result").innerText =
+            predictions[0].className;
+        });
+      }, 2000);
 
     });
   });
