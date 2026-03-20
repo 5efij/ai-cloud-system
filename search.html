@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body style="text-align:center; background:#111; color:white;">
+
+<a href="index.html">⬅ Back</a>
+
+<h2>🔍 Search</h2>
+
+<input type="text" id="searchInput" placeholder="Enter object name">
+<button onclick="search()">Search</button>
+
+<div id="result"></div>
+
+<script>
+function search() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let data = localStorage.getItem("history") || "";
+
+  if (data.toLowerCase().includes(input)) {
+    document.getElementById("result").innerText = "✅ Found!";
+  } else {
+    document.getElementById("result").innerText = "❌ Not Found";
+  }
+}
+</script>
+
+</body>
+</html>
