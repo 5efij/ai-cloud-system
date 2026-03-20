@@ -8,6 +8,10 @@ mobilenet.load().then((loadedModel) => {
 const upload = document.getElementById("upload");
 const image = document.getElementById("image");
 const result = document.getElementById("result");
+const historyDiv = document.getElementById("history");
+
+// تحميل الهستوري القديم
+historyDiv.innerHTML = localStorage.getItem("history") || "";
 
 upload.addEventListener("change", (e) => {
   const file = e.target.files[0];
@@ -18,7 +22,7 @@ upload.addEventListener("change", (e) => {
 
   result.innerText = "⏳ AI is analyzing...";
 
-  // اهتزاز (إذا موبايل)
+  // اهتزاز
   if (navigator.vibrate) {
     navigator.vibrate([200, 100, 200]);
   }
@@ -34,17 +38,30 @@ upload.addEventListener("change", (e) => {
         "\n\n🎯 Accuracy: " +
         (predictions[0].probability * 100).toFixed(2) + "%";
 
-      // 🔥 تأثير احترافي
+      // تأثير
       image.style.transform = "scale(1.1)";
-      image.style.transition = "0.3s";
-
       setTimeout(() => {
         image.style.transform = "scale(1)";
       }, 300);
 
-      // 🔥 تغيير لون النتيجة
-      result.style.color = "#00ffcc";
+      // إضافة للهستوري
+      const item = document.createElement("div");
+      item.innerHTML = `
+        <img src="${image.src}" width="100">
+        <p>${predictions[0].className}</p>
+      `;
+
+      historyDiv.appendChild(item);
+
+      // حفظ بالذاكرة
+      localStorage.setItem("history", historyDiv.innerHTML);
 
     });
   }, 1500);
 });
+
+// حذف الهستوري
+function clearHistory() {
+  historyDiv.innerHTML = "";
+  localStorage.removeItem("history");
+}
