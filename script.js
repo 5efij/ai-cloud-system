@@ -5,15 +5,17 @@ upload.addEventListener("change", () => {
   const file = upload.files[0];
 
   const storage = firebase.storage();
-  const storageRef = storage.ref("images/" + file.name);
+  const storageRef = storage.ref("images/" + Date.now());
 
   storageRef.put(file).then(() => {
     storageRef.getDownloadURL().then((url) => {
-      
-      console.log(url); // مهم حتى نشوف الرابط
-      
-      image.src = url; // هذا اللي يعرض الصورة
-      
+
+      // افتحي الصورة برابط جديد
+      window.open(url, "_blank");
+
+      // عرضها بالموقع
+      image.src = url;
+
     });
   });
 });
