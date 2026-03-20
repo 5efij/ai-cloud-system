@@ -17,8 +17,9 @@ upload.addEventListener("change", (e) => {
   const localURL = URL.createObjectURL(file);
   image.src = localURL;
 
-  result.innerText = "Analyzing...";
-
+result.innerText =
+  "Detected: " + predictions[0].className +
+  "\nAccuracy: " + (predictions[0].probability * 100).toFixed(2) + "%";
   // AI تحليل
   setTimeout(() => {
     model.classify(image).then((predictions) => {
