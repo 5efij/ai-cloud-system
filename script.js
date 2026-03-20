@@ -5,12 +5,15 @@ upload.addEventListener("change", () => {
   const file = upload.files[0];
 
   const storage = firebase.storage();
-  const storageRef = storage.ref(file.name);
+  const storageRef = storage.ref("images/" + file.name);
 
   storageRef.put(file).then(() => {
     storageRef.getDownloadURL().then((url) => {
-      image.src = url;
-      alert("Uploaded to Cloud 😎");
+      
+      console.log(url); // مهم حتى نشوف الرابط
+      
+      image.src = url; // هذا اللي يعرض الصورة
+      
     });
   });
 });
