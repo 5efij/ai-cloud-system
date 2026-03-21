@@ -64,3 +64,58 @@ body {
   </div>
 
   <div class="icon" onclick="openApp('files')">
+    <img src="https://img.icons8.com/color/96/folder.png"/>
+    <div>Files</div>
+  </div>
+
+</div>
+
+<!-- Notes App -->
+<div class="window" id="notes">
+  <div class="header">Notes</div>
+  <div class="content">
+    <textarea id="noteArea" style="width:100%;height:120px;"></textarea>
+    <button onclick="saveNote()">Save</button>
+  </div>
+</div>
+
+<!-- Files App -->
+<div class="window" id="files">
+  <div class="header">Files</div>
+  <div class="content">
+    <input type="file" id="fileInput"/>
+    <button onclick="uploadFile()">Upload</button>
+    <ul id="fileList"></ul>
+  </div>
+</div>
+
+<script>
+function openApp(id){
+  document.getElementById(id).style.display = "flex";
+}
+
+function saveNote(){
+  let text = document.getElementById("noteArea").value;
+  localStorage.setItem("note", text);
+  alert("Saved in Cloud (Demo)");
+}
+
+window.onload = function(){
+  document.getElementById("noteArea").value =
+    localStorage.getItem("note") || "";
+}
+
+// fake upload
+function uploadFile(){
+  let file = document.getElementById("fileInput").files[0];
+  let list = document.getElementById("fileList");
+
+  let li = document.createElement("li");
+  li.textContent = file.name;
+
+  list.appendChild(li);
+}
+</script>
+
+</body>
+</html>
